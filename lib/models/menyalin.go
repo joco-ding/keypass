@@ -22,7 +22,7 @@ func Menyalin(ygdisalin string) {
 		}
 		time.Sleep(time.Millisecond * 100)
 	}
-	if stores.Config.Expired > time.Now().Unix() {
+	if stores.Config.Expired < time.Now().Unix() {
 		clipboard.WriteAll("")
 	}
 }

@@ -7,6 +7,7 @@ import (
 	"keypass/lib/utils"
 	"os"
 	"strings"
+	"time"
 
 	"github.com/atotto/clipboard"
 )
@@ -79,6 +80,7 @@ func ListEntry() {
 			switch _pilihan {
 			case "u", "U":
 				go models.Menyalin(_dusername)
+				time.Sleep(time.Millisecond * 100)
 				_hasilcopy, _err := clipboard.ReadAll()
 				if _err != nil {
 					utils.ErrorLogging("ListEntry6", _err.Error())
@@ -90,6 +92,7 @@ func ListEntry() {
 				}
 			case "p", "P":
 				go models.Menyalin(_dassword)
+				time.Sleep(time.Millisecond * 100)
 				_hasilcopy, _err := clipboard.ReadAll()
 				if _err != nil {
 					utils.ErrorLogging("ListEntry6", _err.Error())
