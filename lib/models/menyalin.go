@@ -1,6 +1,7 @@
 package models
 
 import (
+	"fmt"
 	"keypass/lib/stores"
 	"time"
 
@@ -23,6 +24,13 @@ func Menyalin(ygdisalin string) {
 		time.Sleep(time.Millisecond * 100)
 	}
 	if stores.Config.Expired <= time.Now().Unix() {
-		clipboard.WriteAll("")
+		_hasilcopy, _err := clipboard.ReadAll()
+		if _err != nil {
+			fmt.Println(_err)
+			return
+		}
+		if _hasilcopy == ygdisalin {
+			clipboard.WriteAll("")
+		}
 	}
 }
